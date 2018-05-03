@@ -30,4 +30,4 @@ Feel free to make local changes to _butch-hello-world/src/main/java/com/website/
 
 ## Stopping the app
 
-Simply run `docker stop mycontainer`
+Simply run `docker stop mycontainer` and then `docker rm mycontainer`
