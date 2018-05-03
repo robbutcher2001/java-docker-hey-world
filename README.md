@@ -9,7 +9,7 @@ docker build -t heyworld .
 ```
 
 This will:
-- Pull down a Java 8 + Maven (w/ work proxy) + Tomcat 8 Docker image.
+- Pull down a Java 8 + Maven + Tomcat 8 Docker image.
 - Copy over the source code from the _butch-hello-world_ directory.
 - Run `mvn install`.
 - Copy the built artefacts to Tomcat.
