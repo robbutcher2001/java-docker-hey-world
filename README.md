@@ -14,10 +14,10 @@ This will:
 - Run `mvn install`.
 - Copy the built artefacts to Tomcat.
 
-Once the project has been build, run the image as a container in Docker using:
+Once the project has been built, run the image as a container in Docker using:
 
 ```bash
-docker run -d -p 8080:8080 heyworld
+docker run -d -p 8080:8080 --name mycontainer heyworld
 ```
 
 This will:
@@ -30,4 +30,4 @@ Feel free to make local changes to _butch-hello-world/src/main/java/com/website/
 
 ## Stopping the app
 
-Simply run `docker stop heyworld`
+Simply run `docker stop mycontainer`
