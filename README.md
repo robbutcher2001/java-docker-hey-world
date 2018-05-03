@@ -8,6 +8,8 @@ Build the app using Docker with the command from this directory:
 docker build -t heyworld .
 ```
 
+*NOTE:* you might need to sudo on Ubuntu.
+
 This will:
 - Pull down a Java 8 + Maven + Tomcat 8 Docker image.
 - Copy over the source code from the _butch-hello-world_ directory.
