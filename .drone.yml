@@ -1,0 +1,6 @@
+pipeline:
+  build:
+    image: robbutcher2001/java8-tomcat8-docker
+    commands:
+      - cd butch-hello-world
+      - mvn install
