@@ -4,3 +4,6 @@ pipeline:
     commands:
       - cd butch-hello-world
       - mvn install
+      - mv target/classes /tomcat/webapps/ROOT/WEB-INF
+      - mv src/web.xml /tomcat/webapps/ROOT/WEB-INF
+      - sh /tomcat/bin/catalina.sh run
