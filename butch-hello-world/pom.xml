@@ -35,11 +35,16 @@
               <name>butch_webapp</name>
               <build>
                 <dockerFileDir>${project.basedir}</dockerFileDir>
-                <cmd>
-                  <!-- <shell>${project.basedir}/run-both.sh</shell> -->
-                  <shell>mvn spring-boot:run</shell>
-                </cmd>
+                <!-- <cmd>
+                  <shell>${project.basedir}/run-both.sh</shell>
+                </cmd> -->
               </build>
+              <run>
+                <ports>
+                  <port>8080:8080</port>
+                </ports>
+                <cmd>mvn spring-boot:run</cmd>
+              </run>
             </image>
           </images>
         </configuration>
