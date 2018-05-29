@@ -1,23 +1,21 @@
 package com.website;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.SpringApplication;
 
-public class App extends HttpServlet {
+@RestController
+@EnableAutoConfiguration
+public class App {
 
-  private String message;
+    @RequestMapping("/")
+    public String index() {
+        return "Greetings from Spring Boot!";
+    }
 
-  public void init() throws ServletException {
-    message = "Hello World! How's tricks?";
-  }
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(App.class, args);
+    }
 
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    // Set response content type
-    response.setContentType("text/html");
-
-    // Actual logic goes here.
-    final PrintWriter out = response.getWriter();
-    out.println("<h1>" + message + "</h1>");
-  }
 }
