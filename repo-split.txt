@@ -18,7 +18,7 @@ git push origin master
 
 rm -rf *
 rm -rf .*
-git initgi
+git init
 # add a README.md
 git add .
 git commit -m 'Re-initialising repo'
