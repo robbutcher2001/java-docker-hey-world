@@ -1,0 +1,27 @@
+## Migrate folder to new repo
+
+git clone https://github.com/user/old-repo.git java-docker-hey-world-split-A
+cd java-docker-hey-world-split-A
+git remote rm origin
+cat .git/config
+#git filter-branch --index-filter 'git rm --cached -r butch-hello-world || true' -- --all
+git filter-branch --subdirectory-filter <directory 1> -- --all
+mkdir <directory 1>
+mv * <directory 1>
+git add .
+git commit -m "Migrating to new repo with retained history"
+git remote add origin https://github.com/user/new-repo.git
+git pull origin master --allow-unrelated-histories
+git push origin master
+
+
+## Delete repo and reinitialise
+
+rm -rf *
+rm -rf .*
+git initgi
+# add a README.md
+git add .
+git commit -m 'Re-initialising repo'
+git remote add origin <url>
+git push --force --set-upstream origin master
