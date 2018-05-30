@@ -1,15 +1,19 @@
 ## Migrate folder to new repo
 
-git clone https://github.com/user/old-repo.git old-repo
-cd old-repo
+git clone https://github.com/user/old-repo.git source-repo
+cd source-repo
 git remote rm origin
 cat .git/config
-git filter-branch --subdirectory-filter <directory 1> -- --all
+git filter-branch --subdirectory-filter <directory> -- --all
+
+# Only do if you need a subdirectory:
 mkdir <directory 1>
 mv * <directory 1>
 git add .
 git commit -m "Migrating to new repo with retained history"
-git remote add origin https://github.com/user/new-repo.git
+# To here
+
+git remote add origin https://github.com/user/target-repo.git
 git pull origin master --allow-unrelated-histories
 git push origin master
 
@@ -19,7 +23,7 @@ git push origin master
 rm -rf *
 rm -rf .*
 git init
-# add a README.md
+# add a README.md or something
 git add .
 git commit -m 'Re-initialising repo'
 git remote add origin <url>
