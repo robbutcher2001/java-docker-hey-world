@@ -1,4 +1,4 @@
-FROM robbutcher2001/java8-tomcat8-docker
+FROM java:8
 
 # Create app directory
 RUN mkdir -p /app

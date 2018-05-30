@@ -64,7 +64,7 @@
         <executions>
           <execution>
             <id>start</id>
-            <phase>pre-integration-test</phase>
+            <phase>a-name</phase>
             <goals>
               <goal>stop</goal>
               <goal>build</goal>
