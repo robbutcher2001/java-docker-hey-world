@@ -1,28 +1,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.website</groupId>
-  <artifactId>butch-hello-world</artifactId>
-  <name>butch-hello-world</name>
+  <groupId>butch.hello.world</groupId>
+  <artifactId>butch-application</artifactId>
+  <name>butch-application</name>
+  <version>0.1</version>
+  <packaging>jar</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.0.2.RELEASE</version>
+    <relativePath/>
   </parent>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>butch.hello.world</groupId>
+      <artifactId>butch-service</artifactId>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 
-  <properties>
-    <java.version>1.8</java.version>
-  </properties>
-
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>docker-maven-plugin</artifactId>
@@ -48,6 +60,18 @@
             </image>
           </images>
         </configuration>
+
+        <executions>
+          <execution>
+            <id>start</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+              <goal>build</goal>
+              <goal>start</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
