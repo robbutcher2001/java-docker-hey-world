@@ -1,9 +1,13 @@
 pipeline:
   build:
     image: robbutcher2001/java8-tomcat8-docker
+    secrets:
+        - artifactory_username
+        - artifactory_password
     commands:
       - cd butch-hello-world
+      - 'echo "{ \"auths\": { \"$${DOCKER_REPO}\": { \"auth\": \"$(echo -n "$${ARTIFACTORY_USERNAME}:$${ARTIFACTORY_PASSWORD}" | base64 -w 0)\" } } }" > config.json'
       - mvn install
       - mv target/classes /tomcat/webapps/ROOT/WEB-INF
-      - mv src/web.xml /tomcat/webapps/ROOT/WEB-INF
+      #- mv src/web.xml /tomcat/webapps/ROOT/WEB-INF
       # - sh /tomcat/bin/catalina.sh run
